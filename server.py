@@ -21,7 +21,10 @@ async def handler(websocket):
         except websockets.ConnectionClosedOK:
             break
         print(message)
-        print(model.similarity("cat", message))
+        try:
+            print(model.similarity("cat", message))
+        except:
+            print('invalid input')
 
 
 async def main():
