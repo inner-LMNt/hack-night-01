@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<body>
+    <h1>WORD TO FIND SYNONYM FOR:</h1>
+    <h2>yo</h2>
+
+
+    <br><br>
+
+    <p>enter in your synonym below:</p>
+    <input type="text" id="chosenWord"><br><br>
+    <button onclick=displayWord()>SUBMIT YOUR SYNONYM</button>
+
+    <h3>Your chosen synonym:</h3>
+    <p id="wordDisplayed">null</p>
+    <br><br><br><br>
+    <p>
+        cheese score:
+    </p>
+    <h1><label id="fcheesescore">0</label></h1>
+    <br>
+    <br>
+    <button id="incrementButton">increase cheese score</button>
+    <script>
+        const numberElement = document.getElementById('fcheesescore');
+        const incrementButton = document.getElementById('incrementButton');
+        const submitButton = document.getElementById('submitButton');
+        const wordDisplayed = document.getElementById('wordDisplayed');
+        const chosenWord = document.getElementById('chosenWord');
+
+        let currentNumber = 0;
+    
+        function incrementNumber() {
+            currentNumber++;
+            numberElement.textContent = currentNumber;
+        }
+        
+        function displayWord() {
+            displayedText = chosenWord.value;
+            wordDisplayed.textContent = displayedText;
+        }
+
+        incrementButton.addEventListener('click', incrementNumber);
+    </script>
+</body>
