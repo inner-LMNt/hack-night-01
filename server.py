@@ -4,6 +4,13 @@ path = "/Users/pranavj/gensim-data/word2vec-google-news-300/word2vec-google-news
 model = KeyedVectors.load_word2vec_format(path, binary=True)
 print("done loading")
 
+# To download the model, uncomment the following lines:
+# DO NOT COMMIT THESE LINES UNCOMMENTED
+# path = api.load("word2vec-google-news-300", return_path=True)
+# print(path)
+
+
+
 # print(model.similarity("cat","cinnamon"))
 # print(model.similarity("cat","feline"))
 # print(model.similarity("dog","water"))
@@ -22,10 +29,13 @@ async def handler(websocket):
             break
         print(message)
         try:
-            print(model.similarity("cat", message))
+            score = model.similarity("cat", message)
+            print(score)
+            
         except:
             print('invalid input')
-
+            score = -1
+        await websocket.send(str(score))
 
 async def main():
     async with websockets.serve(handler, "", 8001):
