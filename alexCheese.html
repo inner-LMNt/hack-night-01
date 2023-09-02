@@ -16,7 +16,10 @@
     <button onclick=displayWord()>SUBMIT YOUR SYNONYM</button>
 
     <h3>Your chosen synonym:</h3>
-    <p id="wordDisplayed">null</p>
+    <p id="wordDisplayed">null</p> 
+    <!--
+        word displayed is just null as a placeholder
+    -->
     <br><br><br><br>
     <p>
         cheese score:
@@ -24,26 +27,47 @@
     <h1><label id="fcheesescore">0</label></h1>
     <br>
     <br>
-    <button id="incrementButton">increase cheese score</button>
+    <p>lexigraph score:</p>
+    <p><label id="flexigraphscore">0</label></p>
+    <br><br>
+
+
+    <button id="incrementCheese">increase cheese score</button>
+    <br><br>
+    <button onclick="sacrificeCheese()">sacrifice cheese for lexigraph</button>
     <script>
-        const numberElement = document.getElementById('fcheesescore');
-        const incrementButton = document.getElementById('incrementButton');
+        const displayCheese = document.getElementById('fcheesescore');
+        const displayLexigraph = document.getElementById('flexigraphscore');
+        const incrementCheese = document.getElementById('incrementCheese');
         const submitButton = document.getElementById('submitButton');
         const wordDisplayed = document.getElementById('wordDisplayed');
         const chosenWord = document.getElementById('chosenWord');
-
-        let currentNumber = 0;
+        
+        let currentCheese = 0;
+        let currentLexigraph = 0;
     
-        function incrementNumber() {
-            currentNumber++;
-            numberElement.textContent = currentNumber;
+        function incrementNumber() { //increments number
+            currentCheese++;
+            updateVals();
         }
         
-        function displayWord() {
+        function displayWord() { //displays the word entered into the input box
             displayedText = chosenWord.value;
             wordDisplayed.textContent = displayedText;
         }
 
-        incrementButton.addEventListener('click', incrementNumber);
+        function sacrificeCheese() {
+            currentCheese -= 2;
+            currentLexigraph++;
+            updateVals();
+        }
+
+        function updateVals() {
+            displayLexigraph.textContent = currentLexigraph;
+            displayCheese.textContent = currentCheese;
+        }
+
+        incrementCheese.addEventListener('click', incrementNumber);
+        //increments number when increment button is clicked
     </script>
 </body>
